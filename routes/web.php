@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontpage');
 });
+
+Route::get('/notebooks', 'NotebooksController@index');
+
