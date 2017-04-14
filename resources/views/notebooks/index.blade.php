@@ -4,10 +4,10 @@
     <div class="container text-center">
         <!-- heading -->
         <h1 class="pull-xs-left">
-            Your Notebooks
+            {{Auth::user()->name}} oto Twój notebook!
         </h1>
         <div class="pull-xs-right">
-            <a class="btn btn-primary" href="/notebooks/create" role="button">New NoteBook +</a>
+            <a class="btn btn-primary" href="/notebooks/create" role="button">Nowa notatka</a>
         </div>
 
         <div class="clearfix">
@@ -32,7 +32,7 @@
                 </a>
                 <div class="card-block">
                     <a class="card-link" href="{{route("notebooks.edit", $notebook->id)}}">
-                        Edit Notebook
+                        Edytuj
                     </a>
                     <form action="/notebooks/{{$notebook->id}}" class="pull-xs-right5 card-link" method="POST" style="display:inline">
                         {{csrf_field()}}

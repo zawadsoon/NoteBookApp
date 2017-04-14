@@ -1,56 +1,68 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
-    <meta charset="UTF-8">
-    <title>NoteBook App</title>
+    <meta charset="utf-8">
+    <title>
+        Notebook online
+    </title>
     <link href="{{asset('dist/css/main.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="{{asset('dist/css/bootstrap.css')}}" rel="stylesheet">
+    </meta>
 </head>
-
 <body>
-<div class="container-fluid">
-    <nav class="navbar  navbar-dark bg-primary">
-        {{--<div class="collapse navbar-toggleable-xs" id="navbar-header">--}}
-            {{--<a class="navbar-brand" href="#">NoteBook App</a>--}}
-        {{--</div>--}}
-
-
-
-        <ul class="dropdown-menu-right">
-            <!-- Authentication Links -->
+<div class="container">
+    <nav class="navbar navbar-dark bg-primary">
+        <button aria-controls="navbar-header" class="navbar-toggler hidden-sm-up" data-target="#navbar-header" data-toggle="collapse" type="button">
+            ☰
+        </button>
+        <div class="collapse navbar-toggleable-xs pull-xs-left" id="navbar-header">
+            <a class="navbar-brand" href="{{url('/')}}">
+                Notebook online!
+            </a>
+        </div>
+        <div  class="navholder dropdown pull-xs-right">
             @if (Auth::guest())
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
+
+                <a style="color:white" href="{{ url('/login') }}">
+                    Login
+                </a>
+
+                &nbsp;&nbsp;
+
+
+                <a style="color:white" href="{{ url('/register') }}">
+                    Zarejestruj się!
+                </a>
+
             @else
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                <a class=" navholder dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuButton">
+                    {{ ucfirst(Auth::user()->name) }}
+                    <span class="caret">
+                        </span>
+                </a>
+                <div aria-labelledby="dropdownMenuButton" class="navholder-menu dropdown-menu">
+                    <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                        Wyloguj się!
                     </a>
-
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
-                </li>
+                    <form action="{{ url('/logout') }}" id="logout-form" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </div>
             @endif
-        </ul>
+        </div>
     </nav>
+
     @yield('content')
 </div>
 <!-- /container -->
-
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="{{asset('dist/js/jquery3.min.js')}}">
+</script>
+<script src="{{asset('dist/js/bootstrap.js')}}">
+</script>
+{{--
+<script src="dist/js/bootstrap.js">
+</script>
+--}}
 </body>
-
 </html>

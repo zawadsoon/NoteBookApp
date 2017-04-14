@@ -5,11 +5,11 @@
 <!-- Main component for call to action -->
 <div class="container">
     <h1 class="pull-xs-left">
-        Notes
+        Twoje Notatki
     </h1>
     <div class="pull-xs-right">
-        <a class="btn btn-primary" href="#" role="button">
-            New Note +
+        <a class="btn btn-primary" href="{{route('notes.createNote', $notebook->id)}}" role="button">
+            Nowa notatka
         </a>
     </div>
     <div class="clearfix">
@@ -21,7 +21,7 @@
 
         @foreach($notes as $note)
         <div class="card card-block">
-            <a href="#">
+            <a href="{{route('notes.show', $note->id)}}">
                 <h4 class="card-title">
                     {{$note->title}}
                 </h4>
@@ -29,10 +29,13 @@
             <p class="card-text">
                  {{$note->body}}
             </p>
-            <a class="btn btn-sm btn-info pull-xs-left" href="#">
-                Edit
+            <a class="btn btn-sm btn-info pull-xs-left" href="{{route('notes.edit', $note->id)}}">
+                Edycja
             </a>
-            <form action="#" class="pull-xs-right" method="POST">
+            <form action="{{route('notes.destroy', $note->id)}}" class="pull-xs-right" method="POST">
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
+
                 <input class="btn btn-sm btn-danger" type="submit" value="Delete">
 
             </form>

@@ -11,7 +11,7 @@
             {{csrf_field()}}
             {{method_field('PUT')}}
             <div class="form-group">
-                <label for="name">Notebook name</label>
+                <label for="name">Nazwa notatkie</label>
                 <input class="form-control" type="text" name="name">
 
             </div>

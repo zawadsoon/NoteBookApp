@@ -28,7 +28,7 @@ class NotebooksController extends Controller
 
         $notes = $notebook->notes;
 
-        return view('notes.index', compact('notes'));
+        return view('notes.index', compact('notes', 'notebook'));
     }
 
     public function store(Request $request)

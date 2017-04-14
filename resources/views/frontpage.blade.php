@@ -5,11 +5,10 @@
 
 @section('content')
     <div class="jumbotron">
-        <h1>Notebook</h1>
-        <p>Store and organise your thoughts in notebook and NoteBook web app makes this easier than ever</p>
+        <h1>Witaj {{Auth::user()->name}}</h1>
+        <p>Twórz swoje notatki! Możliwość dodawania, edycja oraz usuwania notatek.</p>
         <p>
-            <a class="btn btn-lg btn-primary" href="{{route('notebooks.index')}}" role="button">Your NoteBooks</a>
+            <a class="btn btn-lg btn-primary" href="{{route('notebooks.index')}}" role="button">Twój notatnik</a>
         </p>
     </div>
-</div>
 @endsection
